@@ -90,7 +90,7 @@ class ShowsCtrler {
                 weakSelf?.onTheAirPageCounter += 1
                 weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.onTheAirPageCounter)!, forShowModel:.onTheAir)
                 weakSelf?.persistenceManager.saveShows(shows: shows, onModel:.onTheAir)
-                let showsVM = weakSelf?.persistenceManager.getMovies(fromModel:.upcoming).map { ShowsVM(managedObject: $0 )}
+                let showsVM = weakSelf?.persistenceManager.getShows(fromModel:.onTheAir).map { ShowsVM(managedObject: $0 )}
                 DispatchQueue.main.async {
                     weakSelf?.view.updateShows(shows:showsVM!)
                 }
