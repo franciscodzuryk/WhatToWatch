@@ -61,16 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.contextManager.saveContext()
     }
     
-    lazy var datastoreCoordinator: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "WhatToWhatchModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
     lazy var contextManager: ContextManager = {
         return ContextManager()
     }()

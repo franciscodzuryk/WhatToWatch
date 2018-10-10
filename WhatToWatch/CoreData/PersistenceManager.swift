@@ -42,18 +42,16 @@ public enum ImageType : String {
     case posterImage = "posterImage"
 }
 
-class PersistenceManager: NSObject {
+class PersistenceManager {
     fileprivate var contextInstance: NSManagedObjectContext
     
-    override init() {
+    init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         contextInstance = appDelegate.contextManager.managedObjectContext
-        super.init()
     }
     
     init(testContextManager:ContextManager) {
         contextInstance = testContextManager.managedObjectContext
-        super.init()
     }
     
     func getContext() -> NSManagedObjectContext {
@@ -80,6 +78,12 @@ extension PersistenceManager : PersistenceManagerInterface {
                 NSFetchRequest<NSFetchRequestResult>(entityName: "MovieUpcomingModel")))
             _ = try contextInstance.execute(NSBatchDeleteRequest(fetchRequest:
                 NSFetchRequest<NSFetchRequestResult>(entityName: "MovieTopRatedModel")))
+            _ = try contextInstance.execute(NSBatchDeleteRequest(fetchRequest:
+                NSFetchRequest<NSFetchRequestResult>(entityName: "ShowPopularModel")))
+            _ = try contextInstance.execute(NSBatchDeleteRequest(fetchRequest:
+                NSFetchRequest<NSFetchRequestResult>(entityName: "ShowOnTheAirModel")))
+            _ = try contextInstance.execute(NSBatchDeleteRequest(fetchRequest:
+                NSFetchRequest<NSFetchRequestResult>(entityName: "ShowTopRatedModel")))
             saveContext()
         } catch {
             
