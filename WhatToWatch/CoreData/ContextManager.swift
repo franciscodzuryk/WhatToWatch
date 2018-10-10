@@ -12,19 +12,21 @@ import CoreData
 /**
  The Context Manager that will manage the merging of child contexts with Master ManagedObjectContext
  */
-class ContextManager: NSObject {
+class ContextManager {
     
     let datastore: NSPersistentContainer!
     
-    override init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.datastore = appDelegate.datastoreCoordinator
-        super.init()
+    init() {
+        datastore = NSPersistentContainer(name: "WhatToWhatchModel")
+        datastore.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
     }
     
     init(testSotreCoordinator: NSPersistentContainer) {
         datastore = testSotreCoordinator
-        super.init()
     }
     
     lazy var managedObjectContext: NSManagedObjectContext = {
