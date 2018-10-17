@@ -6,6 +6,7 @@
 //  Copyright © 2018 Fran. All rights reserved.
 //
 
+import UIKit
 import Alamofire
 import CoreData
 
@@ -23,7 +24,8 @@ class SearchWorker: SearchWorkerProtocol {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MoviePopularModel")
         request.returnsObjectsAsFaults = false
         do {
-            let results = try PersistenceManager().getContext().fetch(request)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let results = try appDelegate.contextManager.getContext().fetch(request)
             let items = results.map { return Item($0 as! NSManagedObject) }
             success(items)
         } catch let error {
@@ -53,7 +55,8 @@ class SearchWorker: SearchWorkerProtocol {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowPopularModel")
         request.returnsObjectsAsFaults = false
         do {
-            let results = try PersistenceManager().getContext().fetch(request)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let results = try appDelegate.contextManager.getContext().fetch(request)
             let items = results.map { return Item($0 as! NSManagedObject) }
             success(items)
         } catch let error {

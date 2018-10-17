@@ -20,7 +20,8 @@ class MoviesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ctrler = MoviesCtrler(self, persistenceManager: PersistenceManager(), apiClient: APIClient())
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        ctrler = MoviesCtrler(self, contextManager: appDelegate.contextManager, apiClient: APIClient())
         ctrler.loadMovies(forModel: .popular)
         setUpNavigationBar()
         setUpPickerView()
@@ -39,9 +40,8 @@ class MoviesVC: UIViewController {
     }
 
     func networkError(error:Error) {
-        let alert = UIAlertController(title: "Network Error", message: error.localizedDescription, preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: "OK", style:.default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
+        dialog.show()
     }
     
     func setUpNavigationBar(){
@@ -55,7 +55,7 @@ class MoviesVC: UIViewController {
     
     func setUpPickerView() {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.doneWithPickerView))
-        self.pickerView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.pickerView.bounds.size.width, height: self.pickerView.bounds.size.height)
+        self.pickerView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.view.bounds.size.width, height: self.pickerView.bounds.size.height)
         self.view.addSubview(self.pickerView)
         pickerView.delegate = self
         pickerView.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.1019607843, blue: 0.1882352941, alpha: 1)
@@ -88,6 +88,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviesCollectionViewCell", for: indexPath) as! MoviesCollectionViewCell
         cell.lblName.text = movies[indexPath.row].title
         let item = movies[indexPath.row]
+        cell.imgMovie.image = UIImage(named: "empty_poster")
         if item.posterImage == nil && item.posterPath != nil {
             ctrler.getImageForMovie(movie: item, indexPath: indexPath)
         } else if item.posterImage != nil {

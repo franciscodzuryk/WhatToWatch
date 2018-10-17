@@ -9,8 +9,7 @@
 import XCTest
 import CoreData
 
-class PersistenceManagerTests: XCTestCase {
-    var persistenceManager: PersistenceManager?
+class ContextManagerTests: XCTestCase {
     var contextManager: ContextManager?
     var apiConfiguration: APIConfiguration?
     var movies = [Movie]()
@@ -22,9 +21,13 @@ class PersistenceManagerTests: XCTestCase {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        contextManager = ContextManager(testSotreCoordinator: container)
-        persistenceManager = PersistenceManager(testContextManager: contextManager!)
-        persistenceManager!.cleanAllData()
+        
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.persistentStoreCoordinator = container.persistentStoreCoordinator
+        contextManager = ContextManager(testSotreCoordinator: container, testContext: context)
+        contextManager?.cleanConfigurationModel()
+        contextManager?.cleanMovieModel()
+        contextManager?.cleanShowModel()
         
         if let pathConfig = Bundle(for: SearchInteractorTest.self).path(forResource: "APIConfiguration", ofType: "json")
         {
@@ -54,17 +57,17 @@ class PersistenceManagerTests: XCTestCase {
     }
     
     func testSaveAndGetConfiguration() {
-        persistenceManager!.saveConfiguration(apiConf: apiConfiguration!)
-        let savedConf = persistenceManager!.getConfiguration()
+        contextManager!.saveConfiguration(apiConf: apiConfiguration!)
+        let savedConf = contextManager!.getConfigurationModel()
         XCTAssert(savedConf != nil)
     }
     
     func testUpdateConfigurationPage() {
-        persistenceManager!.saveConfiguration(apiConf: apiConfiguration!)
-        persistenceManager!.updateConfigurationPage(page: 2, forMovieModel:.popular )
-        persistenceManager!.updateConfigurationPage(page: 2, forMovieModel:.upcoming)
-        persistenceManager!.updateConfigurationPage(page: 2, forMovieModel:.topRated)
-        let savedConf = persistenceManager!.getConfiguration()!
+        contextManager!.saveConfiguration(apiConf: apiConfiguration!)
+        contextManager!.updateConfigurationPage(page: 2, forMovieModel:.popular )
+        contextManager!.updateConfigurationPage(page: 2, forMovieModel:.upcoming)
+        contextManager!.updateConfigurationPage(page: 2, forMovieModel:.topRated)
+        let savedConf = contextManager!.getConfigurationModel()!
         
         let popularPageCounter = (savedConf.value(forKey:"popularMoviesPage") as! Int)
         let upcomingPageCounter = (savedConf.value(forKey:"upcomingPageCounter") as! Int)
@@ -76,34 +79,36 @@ class PersistenceManagerTests: XCTestCase {
     }
     
     func testSaveCheckAndGetMovie() {
-        persistenceManager!.saveMovies(movies: movies, onModel: .popular)
-        persistenceManager!.saveMovies(movies: movies, onModel: .upcoming)
-        persistenceManager!.saveMovies(movies: movies, onModel: .topRated)
-        let savedPopular = persistenceManager!.getMovies(fromModel: .popular)
-        let savedUpcoming = persistenceManager!.getMovies(fromModel: .upcoming)
-        let savedTopRated = persistenceManager!.getMovies(fromModel: .topRated)
+        contextManager!.saveMovies(movies: movies, onModel: .popular)
+        contextManager!.saveMovies(movies: movies, onModel: .upcoming)
+        contextManager!.saveMovies(movies: movies, onModel: .topRated)
+        let savedPopular = contextManager!.getMovies(fromModel: .popular)
+        let savedUpcoming = contextManager!.getMovies(fromModel: .upcoming)
+        let savedTopRated = contextManager!.getMovies(fromModel: .topRated)
         
         XCTAssert(savedPopular.count == 20)
         XCTAssert(savedUpcoming.count == 20)
         XCTAssert(savedTopRated.count == 20)
         
-        XCTAssert(persistenceManager!.movieWasAdded(id: 559, onModel: .popular))
-        XCTAssert(persistenceManager!.movieWasAdded(id: 324857, onModel: .upcoming))
-        XCTAssert(persistenceManager!.movieWasAdded(id: 166822, onModel: .topRated))
+        XCTAssertNotNil(contextManager!.getMovieById(id: 559, fromModel: .popular))
+        XCTAssertNotNil(contextManager!.getMovieById(id: 324857, fromModel: .upcoming))
+        XCTAssertNotNil(contextManager!.getMovieById(id: 166822, fromModel: .topRated))
     }
     
     func testCleanAllData() {
-        persistenceManager!.saveConfiguration(apiConf: apiConfiguration!)
-        persistenceManager!.saveMovies(movies: movies, onModel: .popular)
-        persistenceManager!.saveMovies(movies: movies, onModel: .upcoming)
-        persistenceManager!.saveMovies(movies: movies, onModel: .topRated)
+        contextManager!.saveConfiguration(apiConf: apiConfiguration!)
+        contextManager!.saveMovies(movies: movies, onModel: .popular)
+        contextManager!.saveMovies(movies: movies, onModel: .upcoming)
+        contextManager!.saveMovies(movies: movies, onModel: .topRated)
 
-        persistenceManager!.cleanAllData()
+        contextManager!.cleanConfigurationModel()
+        contextManager!.cleanMovieModel()
+        contextManager!.cleanShowModel()
         
-        let savedConf = persistenceManager!.getConfiguration()
-        let savedPopular = persistenceManager!.getMovies(fromModel: .popular)
-        let savedUpcoming = persistenceManager!.getMovies(fromModel: .upcoming)
-        let savedTopRated = persistenceManager!.getMovies(fromModel: .topRated)
+        let savedConf = contextManager!.getConfigurationModel()
+        let savedPopular = contextManager!.getMovies(fromModel: .popular)
+        let savedUpcoming = contextManager!.getMovies(fromModel: .upcoming)
+        let savedTopRated = contextManager!.getMovies(fromModel: .topRated)
         
         XCTAssert(savedConf == nil)
         XCTAssert(savedPopular.count == 0)
@@ -112,16 +117,16 @@ class PersistenceManagerTests: XCTestCase {
     }
     
     func testSavePosterImageForMovieId() {
-        persistenceManager!.saveMovies(movies: movies, onModel: .popular)
-        persistenceManager!.saveMovies(movies: movies, onModel: .upcoming)
-        persistenceManager!.saveMovies(movies: movies, onModel: .topRated)
+        contextManager!.saveMovies(movies: movies, onModel: .popular)
+        contextManager!.saveMovies(movies: movies, onModel: .upcoming)
+        contextManager!.saveMovies(movies: movies, onModel: .topRated)
         
         let image = UIImage(named: "empty_poster")
-        persistenceManager!.saveImageForMovieId(55825, image: image!, type:.posterImage)
+        contextManager!.saveImageForMovieId(55825, image: image!, type:.posterImage)
         
-        let savedPopular = persistenceManager!.getMovies(fromModel: .popular)
-        let savedUpcoming = persistenceManager!.getMovies(fromModel: .upcoming)
-        let savedTopRated = persistenceManager!.getMovies(fromModel: .topRated)
+        let savedPopular = contextManager!.getMovies(fromModel: .popular)
+        let savedUpcoming = contextManager!.getMovies(fromModel: .upcoming)
+        let savedTopRated = contextManager!.getMovies(fromModel: .topRated)
         
         if let movie = savedPopular.first(where: {($0.value(forKey:"id") as! Int) == 55825}) {
             XCTAssert(movie.value(forKey:"posterImage") != nil)

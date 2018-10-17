@@ -165,11 +165,7 @@ struct Item {
         self.originalTitle = itemDTO.originalTitle
         self.originalLanguage = itemDTO.originalLanguage
         self.title = itemDTO.title
-        if let posterURL = itemDTO.backdropPathString {
-            self.backdropPathString = "https://image.tmdb.org/t/p/w185/" + posterURL
-        } else {
-            self.backdropPathString = nil
-        }
+        self.backdropPathString = itemDTO.backdropPathString
         self.popularity = itemDTO.popularity
         self.voteCount = itemDTO.voteCount
         self.video = itemDTO.video
@@ -192,11 +188,7 @@ struct Item {
         self.originalTitle = itemDTO.originalName
         self.originalLanguage = itemDTO.originalLanguage
         self.title = itemDTO.name
-        if let posterURL = itemDTO.backdropPath {
-            self.backdropPathString = "https://image.tmdb.org/t/p/w185/" + posterURL
-        } else {
-            self.backdropPathString = nil
-        }
+        self.backdropPathString = itemDTO.backdropPath
         self.popularity = itemDTO.popularity
         self.voteCount = itemDTO.voteCount
         self.video = false

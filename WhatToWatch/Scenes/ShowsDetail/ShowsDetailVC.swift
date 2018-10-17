@@ -26,7 +26,8 @@ class ShowsDetailVC: UIViewController, ShowsDetailVCDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ctrler = ShowsDetailCtrler(self, persistenceManager: PersistenceManager(), apiClient: APIClient())
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        ctrler = ShowsDetailCtrler(self, contextManager: appDelegate.contextManager, apiClient: APIClient())
         ctrler.getVideos(forShow: show!)
         if let image = show!.backdropImage {
             imgShow.image = image
@@ -45,9 +46,8 @@ class ShowsDetailVC: UIViewController, ShowsDetailVCDelegate {
     }
     
     func networkError(error:Error) {
-        let alert = UIAlertController(title: "Network Error", message: error.localizedDescription, preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: "OK", style:.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
+        dialog.show()
     }
  
      func loadVideo(videoId:String) {

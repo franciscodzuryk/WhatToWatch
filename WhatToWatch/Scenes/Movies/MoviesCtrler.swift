@@ -16,23 +16,23 @@ class MoviesCtrler {
     private var upcomingPageCounter: Int
     private var topRatedPageCounter: Int
     private var apiConfiguration: APIConfiguration?
-    private let persistenceManager: PersistenceManagerInterface
+    private let contextManager: ContextManagerInterface
     private let apiClient: APIClientInterface
     private var selectedModel = MoviesPersistenModel.popular
     var loading = false
     
-    init(_ view: MoviesVCDelegate, persistenceManager: PersistenceManagerInterface, apiClient: APIClientInterface) {
+    init(_ view: MoviesVCDelegate, contextManager: ContextManagerInterface, apiClient: APIClientInterface) {
         self.view = view
-        self.persistenceManager = persistenceManager
+        self.contextManager = contextManager
         self.apiClient = apiClient
         self.popularPageCounter = 1
         self.upcomingPageCounter = 1
         self.topRatedPageCounter = 1
         //THIS MUST BE DONE ON THE SPLASH SCREEN
-        if let config = persistenceManager.getConfiguration() {
-            self.popularPageCounter = (config.value(forKey:"popularMoviesPage") as! Int)
-            self.upcomingPageCounter = (config.value(forKey:"upcomingPageCounter") as! Int)
-            self.topRatedPageCounter = (config.value(forKey:"topRatedPageCounter") as! Int)
+        if let config = contextManager.getConfigurationModel() {
+            self.popularPageCounter = Int(config.popularMoviesPage)
+            self.upcomingPageCounter = Int(config.upcomingPageCounter)
+            self.topRatedPageCounter = Int(config.topRatedPageCounter)
         } else {
             self.fetchAPIConfiguration()
         }
@@ -48,12 +48,11 @@ class MoviesCtrler {
     
     //THIS MUST BE DONE ON THE SPLASH SCREEN
     func fetchAPIConfiguration() {
-        weak var weakSelf = self
-        apiClient.getAPIConfiguration(success: { (apiConfig: APIConfiguration) in
-            weakSelf?.persistenceManager.saveConfiguration(apiConf: apiConfig)
-        }) { (error: Error) in
-            DispatchQueue.main.async {
-                self.view.networkError(error: error)
+        apiClient.getAPIConfiguration(success: { [weak self] (apiConfig: APIConfiguration) in
+            self?.contextManager.saveConfiguration(apiConf: apiConfig)
+        }) { [weak self] (error: Error) in
+            DispatchQueue.main.async { [weak self] in
+                self?.view.networkError(error: error)
             }
         }
     }
@@ -61,7 +60,7 @@ class MoviesCtrler {
     
     func loadMovies(forModel model: MoviesPersistenModel) {
         selectedModel = model
-        let movies = persistenceManager.getMovies(fromModel:model).map { MoviesVM(managedObject: $0 )}
+        let movies = contextManager.getMovies(fromModel:model).map { MoviesVM(movieModel: $0)}
         if movies.count > 0 {
             view.updateMovies(movies: movies)
         } else {
@@ -84,20 +83,18 @@ class MoviesCtrler {
     func fetchPopularMovies() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getPopularMovies(page: self.popularPageCounter, success: { (movies: [Movie]) in
-                weakSelf?.loading = false
-                weakSelf?.popularPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.popularPageCounter)!, forMovieModel:.popular)
-                weakSelf?.persistenceManager.saveMovies(movies: movies, onModel:.popular)
-                let movies = weakSelf?.persistenceManager.getMovies(fromModel:.popular).map { MoviesVM(managedObject: $0 )}
-                DispatchQueue.main.async {
-                    weakSelf?.view.updateMovies(movies:movies!)
+            apiClient.getPopularMovies(page: self.popularPageCounter, success: { [weak self] (movies: [Movie]) in
+                self?.loading = false
+                self?.popularPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.popularPageCounter)!, forMovieModel:.popular)
+                self?.contextManager.saveMovies(movies: movies, onModel:.popular)
+                let movies = self?.contextManager.getMovies(fromModel:.popular).map { MoviesVM(movieModel: $0 )}
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.updateMovies(movies:movies!)
                 }
-            }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+            }) { [weak self] (error: Error) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
@@ -106,20 +103,18 @@ class MoviesCtrler {
     func fetchUpcomingMovies() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getUpcomingMovies(page: self.upcomingPageCounter, success: { (movies: [Movie]) in
-                weakSelf?.loading = false
-                weakSelf?.upcomingPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.upcomingPageCounter)!, forMovieModel:.upcoming)
-                weakSelf?.persistenceManager.saveMovies(movies: movies, onModel:.upcoming)
-                let movies = weakSelf?.persistenceManager.getMovies(fromModel:.upcoming).map { MoviesVM(managedObject: $0 )}
-                DispatchQueue.main.async {
-                    weakSelf?.view.updateMovies(movies:movies!)
+            apiClient.getUpcomingMovies(page: self.upcomingPageCounter, success: { [weak self] (movies: [Movie]) in
+                self?.loading = false
+                self?.upcomingPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.upcomingPageCounter)!, forMovieModel:.upcoming)
+                self?.contextManager.saveMovies(movies: movies, onModel:.upcoming)
+                let movies = self?.contextManager.getMovies(fromModel:.upcoming).map { MoviesVM(movieModel: $0 )}
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.updateMovies(movies:movies!)
                 }
-            }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+            }) { [weak self] (error: Error) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
@@ -128,36 +123,33 @@ class MoviesCtrler {
     func fetchTopRatedMovies() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getTopRatedMovies(page: self.topRatedPageCounter, success: { (movies: [Movie]) in
-                weakSelf?.loading = false
-                weakSelf?.topRatedPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.topRatedPageCounter)!, forMovieModel:.topRated)
-                weakSelf?.persistenceManager.saveMovies(movies: movies, onModel:.topRated)
-                let movies = weakSelf?.persistenceManager.getMovies(fromModel:.topRated).map { MoviesVM(managedObject: $0 )}
-                DispatchQueue.main.async {
-                    weakSelf?.view.updateMovies(movies:movies!)
+            apiClient.getTopRatedMovies(page: self.topRatedPageCounter, success: { [weak self] (movies: [Movie]) in
+                self?.loading = false
+                self?.topRatedPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.topRatedPageCounter)!, forMovieModel:.topRated)
+                self?.contextManager.saveMovies(movies: movies, onModel:.topRated)
+                let movies = self?.contextManager.getMovies(fromModel:.topRated).map { MoviesVM(movieModel: $0 )}
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.updateMovies(movies:movies!)
                 }
             }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
     }
     
     func getImageForMovie(movie: MoviesVM, indexPath: IndexPath) {
-        weak var weakself = self
         if let urlImage = movie.posterPath {
-            apiClient.getImage(urlImage, success: { (image: UIImage) in
-                weakself!.persistenceManager.saveImageForMovieId(movie.id, image:image, type:.posterImage)
-                weakself!.view.updateImage(image: image, indexPath: indexPath)
-            }) { (error:Error) in
-                
+            apiClient.getImage("https://image.tmdb.org/t/p/w185/" + urlImage, success: { [weak self] (image: UIImage) in
+                self?.contextManager.saveImageForMovieId(movie.id, image:image, type:.posterImage)
+                self?.view.updateImage(image: image, indexPath: indexPath)
+            }) { [weak self] (error: Error) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
+                }
             }
         }
     }
-    
-    
 }

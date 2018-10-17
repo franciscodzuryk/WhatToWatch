@@ -12,21 +12,19 @@ import CoreData
 class ShowsDetailCtrler {
     private weak var view: ShowsDetailVCDelegate!
     private var apiConfiguration: APIConfiguration?
-    private let persistenceManager: PersistenceManagerInterface
+    private let contextManager: ContextManagerInterface
     private let apiClient: APIClientInterface
     
-    init(_ view: ShowsDetailVCDelegate, persistenceManager: PersistenceManagerInterface, apiClient: APIClientInterface) {
+    init(_ view: ShowsDetailVCDelegate, contextManager: ContextManagerInterface, apiClient: APIClientInterface) {
         self.view = view
-        self.persistenceManager = persistenceManager
+        self.contextManager = contextManager
         self.apiClient = apiClient
     }
 
     func getVideos(forShow show:ShowsVM) {
-        weak var weakSelf = self
-        apiClient.getVideosShow(showId: show.id, success: {
-            (videos: [VideoMovie]) in
+        apiClient.getVideosShow(showId: show.id, success: { [weak self] (videos: [VideoMovie]) in
             if let video = videos.first {
-                weakSelf?.view.loadVideo(videoId: video.key)
+                self?.view.loadVideo(videoId: video.key)
             }
         }) { (error: Error) in
             print(error)
@@ -34,13 +32,14 @@ class ShowsDetailCtrler {
     }
     
     func getImageForShow(show: ShowsVM) {
-        weak var weakself = self
         if let urlImage = show.backdropPath {
-            apiClient.getImage(urlImage, success: { (image: UIImage) in
-                weakself!.persistenceManager.saveImageForShowId(show.id, image:image, type:.backdropImage)
-                weakself!.view.updateImage(image: image)
-            }) { (error:Error) in
-                
+            apiClient.getImage("https://image.tmdb.org/t/p/w300/" + urlImage, success: { [weak self] (image: UIImage) in
+                self?.contextManager.saveImageForShowId(show.id, image:image, type:.backdropImage)
+                self?.view.updateImage(image: image)
+            }) { [weak self] (error: Error) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
+                }
             }
         }
     }

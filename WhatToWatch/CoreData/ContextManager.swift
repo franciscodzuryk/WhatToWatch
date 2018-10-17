@@ -9,36 +9,41 @@
 import UIKit
 import CoreData
 
-/**
- The Context Manager that will manage the merging of child contexts with Master ManagedObjectContext
- */
-class ContextManager: NSObject {
-    
-    let datastore: NSPersistentContainer!
-    
-    override init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.datastore = appDelegate.datastoreCoordinator
-        super.init()
+protocol ContextManagerInterface : ContextManagerConfigurationInterface, ContextManagerMovieInterface, ContextManagerShowInterface {
+    func getContext() -> NSManagedObjectContext
+    func saveContext()
+}
+
+class ContextManager:ContextManagerInterface {
+    private let datastore: NSPersistentContainer
+    private let context: NSManagedObjectContext
+
+    init() {
+        datastore = NSPersistentContainer(name: "WhatToWhatchModel")
+        datastore.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.persistentStoreCoordinator = datastore.persistentStoreCoordinator
+
     }
     
-    init(testSotreCoordinator: NSPersistentContainer) {
+    init(testSotreCoordinator: NSPersistentContainer, testContext:NSManagedObjectContext) {
         datastore = testSotreCoordinator
-        super.init()
+        context = testContext
     }
     
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        var mainManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        mainManagedObjectContext.persistentStoreCoordinator = self.datastore.persistentStoreCoordinator
-        
-        return mainManagedObjectContext
-    }()
+    func getContext()  -> NSManagedObjectContext {
+        return context
+    }
     
     func saveContext() {
-        if self.managedObjectContext.hasChanges {
-            DispatchQueue.main.async(execute: {
+        if context.hasChanges {
+            DispatchQueue.main.async(execute: { [weak self] in
                 do {
-                    try self.managedObjectContext.save()
+                    try self?.context.save()
                 } catch let mocSaveError as NSError {
                     print("Master Managed Object Context error: \(mocSaveError.localizedDescription)")
                 }

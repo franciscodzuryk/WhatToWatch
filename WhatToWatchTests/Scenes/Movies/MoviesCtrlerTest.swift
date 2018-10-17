@@ -9,6 +9,7 @@
 import XCTest
 
 class MoviesCtrlerTest: XCTestCase {
+    /*
     let persistenceManager: PersistenceManagerInterface? = nil
     let apiClient: APIClientInterface? = nil
 
@@ -214,4 +215,5 @@ class MoviesViewMock: MoviesVCDelegate {
     func updateImage(image: UIImage, indexPath: IndexPath) {
         updateImageCount += 1
     }
+ */
 }

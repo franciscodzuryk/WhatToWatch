@@ -74,7 +74,7 @@ class SearchVC: UIViewController, SearchViewControllerInput, UITableViewDelegate
     
     func setUpPickerView(){
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.doneWithPickerView))
-        self.pickerView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.pickerView.bounds.size.width, height: self.pickerView.bounds.size.height)
+        self.pickerView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.view.bounds.size.width, height: self.pickerView.bounds.size.height)
         self.view.addSubview(self.pickerView)
         pickerView.delegate = self
         pickerView.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.1019607843, blue: 0.1882352941, alpha: 1)
@@ -145,15 +145,8 @@ class SearchVC: UIViewController, SearchViewControllerInput, UITableViewDelegate
     }
     
     func displayLoadListError() {
-        
-        let alertController = UIAlertController(title: "Error getting data",
-                                                message: "The search could not be performed.",
-                                                preferredStyle: .alert)
-        
-        alertController.addAction( UIAlertAction(title: "Dismiss",
-                                                 style: .default, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
+        let dialog = DialogViewController.dialogWithTitle(title: "Error getting data", message: "The search could not be performed.", cancelTitle: "Ok")
+        dialog.show()
     }
     
     // MARK: tableView

@@ -16,20 +16,20 @@ class ShowsCtrler {
     private var onTheAirPageCounter: Int
     private var topRatedPageCounter: Int
     private var apiConfiguration: APIConfiguration?
-    private let persistenceManager: PersistenceManagerInterface
+    private let contextManager: ContextManagerInterface
     private let apiClient: APIClientInterface
     private var selectedModel = ShowsPersistenModel.popular
     var loading = false
     
-    init(_ view: ShowsVCDelegate, persistenceManager: PersistenceManagerInterface, apiClient: APIClientInterface) {
+    init(_ view: ShowsVCDelegate, contextManager: ContextManagerInterface, apiClient: APIClientInterface) {
         self.view = view
-        self.persistenceManager = persistenceManager
+        self.contextManager = contextManager
         self.apiClient = apiClient
         self.popularPageCounter = 1
         self.onTheAirPageCounter = 1
         self.topRatedPageCounter = 1
         //THIS MUST BE DONE ON THE SPLASH SCREEN
-        if let config = persistenceManager.getConfiguration() {
+        if let config = contextManager.getConfigurationModel() {
             self.popularPageCounter = (config.value(forKey:"popularShowsPage") as! Int)
             self.onTheAirPageCounter = (config.value(forKey:"onTheAirShowPage") as! Int)
             self.topRatedPageCounter = (config.value(forKey:"topRatedShowPage") as! Int)
@@ -39,7 +39,7 @@ class ShowsCtrler {
     
     func loadShows(forModel model: ShowsPersistenModel) {
         selectedModel = model
-        let shows = persistenceManager.getShows(fromModel:model).map { ShowsVM(managedObject: $0 )}
+        let shows = contextManager.getShows(fromModel:model).map { ShowsVM(showModel: $0 )}
         if shows.count > 0 {
             view.updateShows(shows: shows)
         } else {
@@ -62,20 +62,19 @@ class ShowsCtrler {
     func fetchPopularShows() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getPopularShows(page: self.popularPageCounter, success: { (shows: [Show]) in
-                weakSelf?.loading = false
-                weakSelf?.popularPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.popularPageCounter)!, forShowModel:.popular)
-                weakSelf?.persistenceManager.saveShows(shows: shows, onModel:.popular)
-                let showsVM = weakSelf?.persistenceManager.getShows(fromModel:.popular).map { ShowsVM(managedObject: $0 )}
-                DispatchQueue.main.async {
-                    weakSelf?.view.updateShows(shows:showsVM!)
+            apiClient.getPopularShows(page: self.popularPageCounter, success: { [weak self] (shows: [Show]) in
+                self?.loading = false
+                self?.popularPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.popularPageCounter)!, forShowModel:.popular)
+                self?.contextManager.saveShows(shows: shows, onModel:.popular)
+                let showsVM = self?.contextManager.getShows(fromModel:.popular).map { ShowsVM(showModel: $0 )}
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.updateShows(shows:showsVM!)
                 }
-            }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+            }) { [weak self] (error: Error) in
+                self?.loading = false
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
@@ -84,20 +83,19 @@ class ShowsCtrler {
     func fetchOnTheAirShows() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getOnTheAirShows(page: self.onTheAirPageCounter, success: { (shows: [Show]) in
-                weakSelf?.loading = false
-                weakSelf?.onTheAirPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.onTheAirPageCounter)!, forShowModel:.onTheAir)
-                weakSelf?.persistenceManager.saveShows(shows: shows, onModel:.onTheAir)
-                let showsVM = weakSelf?.persistenceManager.getShows(fromModel:.onTheAir).map { ShowsVM(managedObject: $0 )}
+            apiClient.getOnTheAirShows(page: self.onTheAirPageCounter, success: { [weak self] (shows: [Show]) in
+                self?.loading = false
+                self?.onTheAirPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.onTheAirPageCounter)!, forShowModel:.onTheAir)
+                self?.contextManager.saveShows(shows: shows, onModel:.onTheAir)
+                let showsVM = self?.contextManager.getShows(fromModel:.onTheAir).map { ShowsVM(showModel: $0 )}
                 DispatchQueue.main.async {
-                    weakSelf?.view.updateShows(shows:showsVM!)
+                    self?.view.updateShows(shows:showsVM!)
                 }
-            }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+            }) { [weak self] (error: Error) in
+                self?.loading = false
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
@@ -106,33 +104,34 @@ class ShowsCtrler {
     func fetchTopRatedShows() {
         if !loading {
             loading = true
-            weak var weakSelf = self
-            apiClient.getTopRatedShows(page: self.topRatedPageCounter, success: { (shows: [Show]) in
-                weakSelf?.loading = false
-                weakSelf?.topRatedPageCounter += 1
-                weakSelf?.persistenceManager.updateConfigurationPage(page: (weakSelf?.topRatedPageCounter)!, forShowModel:.topRated)
-                weakSelf?.persistenceManager.saveShows(shows: shows, onModel:.topRated)
-                let showsVM = weakSelf?.persistenceManager.getShows(fromModel:.topRated).map { ShowsVM(managedObject: $0 )}
-                DispatchQueue.main.async {
-                    weakSelf?.view.updateShows(shows:showsVM!)
+            apiClient.getTopRatedShows(page: self.topRatedPageCounter, success: { [weak self] (shows: [Show]) in
+                self?.loading = false
+                self?.topRatedPageCounter += 1
+                self?.contextManager.updateConfigurationPage(page: (self?.topRatedPageCounter)!, forShowModel:.topRated)
+                self?.contextManager.saveShows(shows: shows, onModel:.topRated)
+                let showsVM = self?.contextManager.getShows(fromModel:.topRated).map { ShowsVM(showModel: $0 )}
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.updateShows(shows:showsVM!)
                 }
-            }) { (error: Error) in
-                weakSelf?.loading = false
-                DispatchQueue.main.async {
-                    weakSelf?.view.networkError(error: error)
+            }) { [weak self] (error: Error) in
+                self?.loading = false
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
                 }
             }
         }
     }
     
     func getImageForShow(show: ShowsVM, indexPath: IndexPath) {
-        weak var weakself = self
         if let urlImage = show.posterPath {
-            apiClient.getImage(urlImage, success: { (image: UIImage) in
-                weakself!.persistenceManager.saveImageForShowId(show.id, image:image, type:.posterImage)
-                weakself!.view.updateImage(image: image, indexPath: indexPath)
-            }) { (error:Error) in
-                
+            apiClient.getImage("https://image.tmdb.org/t/p/w185/" + urlImage, success: { [weak self] (image: UIImage) in
+                self?.contextManager.saveImageForShowId(show.id, image:image, type:.posterImage)
+                self?.view.updateImage(image: image, indexPath: indexPath)
+            }) { [weak self] (error: Error) in
+                self?.loading = false
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
+                }
             }
         }
     }

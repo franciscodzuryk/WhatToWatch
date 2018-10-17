@@ -26,27 +26,27 @@ public struct MoviesVM {
     let backdropImage: UIImage?
     var posterImage: UIImage?
     
-    init(managedObject: NSManagedObject) {
-        self.id = managedObject.value(forKey:"id") as! Int
-        self.posterPath = managedObject.value(forKey:"posterPath") as? String
-        self.adult = managedObject.value(forKey:"adult") as! Bool
-        self.overview = managedObject.value(forKey:"overview") as! String
-        self.releaseDate = managedObject.value(forKey:"releaseDate") as! String
-        self.originalTitle = managedObject.value(forKey:"originalTitle") as! String
-        self.originalLanguage = managedObject.value(forKey:"originalLanguage") as? String
-        self.title = managedObject.value(forKey:"title") as! String
-        self.backdropPathString = managedObject.value(forKey:"backdropPathString") as? String
-        self.popularity = managedObject.value(forKey:"popularity") as! Double
-        self.voteCount = managedObject.value(forKey:"voteCount") as! Int
-        self.voteAverage = managedObject.value(forKey:"voteAverage") as! Double
+    init(movieModel: MovieModel) {
+        self.id = Int(movieModel.id)
+        self.posterPath = movieModel.posterPath
+        self.adult = movieModel.adult
+        self.overview = movieModel.overview!
+        self.releaseDate = movieModel.releaseDate!
+        self.originalTitle = movieModel.originalTitle!
+        self.originalLanguage = movieModel.originalLanguage
+        self.title = movieModel.title!
+        self.backdropPathString = movieModel.backdropPath
+        self.popularity = movieModel.popularity
+        self.voteCount = Int(movieModel.voteCount)
+        self.voteAverage = movieModel.voteAverage
         
-        if let backdropImageData = managedObject.value(forKey:"backdropImage") as! Data? {
+        if let backdropImageData = movieModel.backdropImage {
             self.backdropImage = UIImage(data: backdropImageData)
         } else {
             self.backdropImage = nil
         }
         
-        if let posterImageData = managedObject.value(forKey:"posterImage") as! Data? {
+        if let posterImageData = movieModel.posterImage {
             self.posterImage = UIImage(data: posterImageData)
         } else {
             self.posterImage = nil

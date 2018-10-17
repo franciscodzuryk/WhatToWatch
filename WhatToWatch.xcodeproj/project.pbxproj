@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B01FC082171A6840061CD1E /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
+		0B01FC0D2171C42E0061CD1E /* DialogViewControlles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */; };
+		0B01FC102171CEE80061CD1E /* DialogViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B01FC0F2171CEE80061CD1E /* DialogViewController.storyboard */; };
+		0B01FC112171CEF30061CD1E /* DialogViewControlles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */; };
+		0B130D7621711741008DE2AB /* ContextManager+Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7521711741008DE2AB /* ContextManager+Movie.swift */; };
+		0B130D7821711A18008DE2AB /* ContextManager+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7721711A18008DE2AB /* ContextManager+Configuration.swift */; };
+		0B130D7921711DA9008DE2AB /* ContextManager+Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7521711741008DE2AB /* ContextManager+Movie.swift */; };
+		0B130D7A21711E2C008DE2AB /* ContextManager+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7721711A18008DE2AB /* ContextManager+Configuration.swift */; };
+		0B130D7C21712202008DE2AB /* ContextManager+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7B21712202008DE2AB /* ContextManager+Show.swift */; };
+		0B130D7D21712202008DE2AB /* ContextManager+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7B21712202008DE2AB /* ContextManager+Show.swift */; };
+		0B545965216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
+		0B545966216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
 		2EEAD07721690B6A00AE802B /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEAD07521690B6A00AE802B /* MoviesCollectionViewCell.swift */; };
 		348B040F93D091536BF64832 /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1AD9F52836E910CF1CF4B3 /* Pods_WhatToWatch.framework */; };
 		99EBD3C66701E0832A4D5B30 /* Pods_WhatToWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00394F760E75B65F696FC24 /* Pods_WhatToWatchTests.framework */; };
@@ -32,11 +44,8 @@
 		A12DF89121653F7E00003BDB /* MoviesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF89021653F7E00003BDB /* MoviesVCDelegate.swift */; };
 		A12DF89221653F7E00003BDB /* MoviesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF89021653F7E00003BDB /* MoviesVCDelegate.swift */; };
 		A12DF8952165476E00003BDB /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
-		A12DF8962165476E00003BDB /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
 		A12DF89821654AB600003BDB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12DF89721654AB600003BDB /* CoreData.framework */; };
 		A12DF8D621654D9200003BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8422163C3BD00003BDB /* AppDelegate.swift */; };
-		A12DF8D9216596E300003BDB /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8D8216596E300003BDB /* PersistenceManager.swift */; };
-		A12DF8DA216596E300003BDB /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8D8216596E300003BDB /* PersistenceManager.swift */; };
 		A12DF8DC216596F500003BDB /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8DB216596F500003BDB /* ContextManager.swift */; };
 		A12DF8DD216596F500003BDB /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8DB216596F500003BDB /* ContextManager.swift */; };
 		A12DF8E22165CBDD00003BDB /* MoviesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8E12165CBDD00003BDB /* MoviesVM.swift */; };
@@ -45,7 +54,7 @@
 		A15163B3216AC11500D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
 		A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
 		A15163BB216AEA5900D17686 /* MoviesCtrlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163BA216AEA5900D17686 /* MoviesCtrlerTest.swift */; };
-		A15163C0216AECC900D17686 /* PersistenceManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163BF216AECC900D17686 /* PersistenceManagerMock.swift */; };
+		A15163C0216AECC900D17686 /* ContextManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163BF216AECC900D17686 /* ContextManagerMock.swift */; };
 		A15163C2216AECF100D17686 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163C1216AECF100D17686 /* APIClientMock.swift */; };
 		A15163CB216B33AC00D17686 /* ShowsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163C5216B33AB00D17686 /* ShowsVC.swift */; };
 		A15163CC216B33AC00D17686 /* ShowsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163C5216B33AB00D17686 /* ShowsVC.swift */; };
@@ -80,7 +89,7 @@
 		A17005E22169290F000F60FB /* SearchInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17005E12169290F000F60FB /* SearchInteractorTest.swift */; };
 		A17005E421692F0D000F60FB /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = A17005E321692F0D000F60FB /* Movies.json */; };
 		A17005E52169335F000F60FB /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F39712166A26600CD4D54 /* SearchVC.swift */; };
-		A17005E92169476A000F60FB /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17005E82169476A000F60FB /* PersistenceManagerTests.swift */; };
+		A17005E92169476A000F60FB /* ContextManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17005E82169476A000F60FB /* ContextManagerTests.swift */; };
 		A1E3A5382166AB7B0089BFFF /* SearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3A5372166AB7B0089BFFF /* SearchVC.storyboard */; };
 		A1E3A5392166AB7B0089BFFF /* SearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3A5372166AB7B0089BFFF /* SearchVC.storyboard */; };
 		A1E3A53B2166ABAE0089BFFF /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E3A53A2166ABAE0089BFFF /* SearchWorker.swift */; };
@@ -118,6 +127,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewControlles.swift; sourceTree = "<group>"; };
+		0B01FC0F2171CEE80061CD1E /* DialogViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DialogViewController.storyboard; sourceTree = "<group>"; };
+		0B130D7521711741008DE2AB /* ContextManager+Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextManager+Movie.swift"; sourceTree = "<group>"; };
+		0B130D7721711A18008DE2AB /* ContextManager+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextManager+Configuration.swift"; sourceTree = "<group>"; };
+		0B130D7B21712202008DE2AB /* ContextManager+Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextManager+Show.swift"; sourceTree = "<group>"; };
+		0B545964216EB64F00C0B935 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25346A1EC2C5952ED1CC4E64 /* Pods-WhatToWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		27C4ED21FBB4C0D0E5124188 /* Pods-WhatToWatchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToWatchUITests/Pods-WhatToWatchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EEAD07521690B6A00AE802B /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -145,13 +160,12 @@
 		A12DF89021653F7E00003BDB /* MoviesVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVCDelegate.swift; sourceTree = "<group>"; };
 		A12DF8942165476E00003BDB /* WhatToWhatchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatToWhatchModel.xcdatamodel; sourceTree = "<group>"; };
 		A12DF89721654AB600003BDB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A12DF8D8216596E300003BDB /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		A12DF8DB216596F500003BDB /* ContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		A12DF8E12165CBDD00003BDB /* MoviesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVM.swift; sourceTree = "<group>"; };
 		A15163AF2169A55300D17686 /* APIConfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APIConfiguration.json; sourceTree = "<group>"; };
 		A15163B2216AC11500D17686 /* VideoMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMovie.swift; sourceTree = "<group>"; };
 		A15163BA216AEA5900D17686 /* MoviesCtrlerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCtrlerTest.swift; sourceTree = "<group>"; };
-		A15163BF216AECC900D17686 /* PersistenceManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerMock.swift; sourceTree = "<group>"; };
+		A15163BF216AECC900D17686 /* ContextManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManagerMock.swift; sourceTree = "<group>"; };
 		A15163C1216AECF100D17686 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
 		A15163C5216B33AB00D17686 /* ShowsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsVC.swift; sourceTree = "<group>"; };
 		A15163C6216B33AB00D17686 /* ShowsVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowsVC.storyboard; sourceTree = "<group>"; };
@@ -172,7 +186,7 @@
 		A17005DF21692801000F60FB /* SearchPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTest.swift; sourceTree = "<group>"; };
 		A17005E12169290F000F60FB /* SearchInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTest.swift; sourceTree = "<group>"; };
 		A17005E321692F0D000F60FB /* Movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
-		A17005E82169476A000F60FB /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
+		A17005E82169476A000F60FB /* ContextManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManagerTests.swift; sourceTree = "<group>"; };
 		A1E3A5372166AB7B0089BFFF /* SearchVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchVC.storyboard; sourceTree = "<group>"; };
 		A1E3A53A2166ABAE0089BFFF /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		A1E3A53D2166ABC40089BFFF /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -217,6 +231,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B01FC0B2171C4020061CD1E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0B01FC0E2171CEC50061CD1E /* Dialog */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0B01FC0E2171CEC50061CD1E /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				0B01FC0F2171CEE80061CD1E /* DialogViewController.storyboard */,
+				0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
 		614E6E1C2CB0CA28061AB799 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +290,7 @@
 				A12DF8792164FCB200003BDB /* Model */,
 				A12DF8722163C93600003BDB /* Network */,
 				A12DF8802165177600003BDB /* Scenes */,
+				0B01FC0B2171C4020061CD1E /* Utils */,
 				A12DF8422163C3BD00003BDB /* AppDelegate.swift */,
 				A12DF8482163C3BD00003BDB /* Main.storyboard */,
 				A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */,
@@ -302,10 +334,11 @@
 		A12DF8792164FCB200003BDB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B545964216EB64F00C0B935 /* Configuration.swift */,
+				A12DF87D21650DAE00003BDB /* APIConfiguration.swift */,
 				A12DF87A2164FD6600003BDB /* Movie.swift */,
 				A15163E3216B3E4900D17686 /* Show.swift */,
 				A15163B2216AC11500D17686 /* VideoMovie.swift */,
-				A12DF87D21650DAE00003BDB /* APIConfiguration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,8 +387,10 @@
 		A12DF8D7216596B800003BDB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A12DF8D8216596E300003BDB /* PersistenceManager.swift */,
 				A12DF8DB216596F500003BDB /* ContextManager.swift */,
+				0B130D7721711A18008DE2AB /* ContextManager+Configuration.swift */,
+				0B130D7521711741008DE2AB /* ContextManager+Movie.swift */,
+				0B130D7B21712202008DE2AB /* ContextManager+Show.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -390,7 +425,7 @@
 		A15163BE216AEC8700D17686 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				A15163BF216AECC900D17686 /* PersistenceManagerMock.swift */,
+				A15163BF216AECC900D17686 /* ContextManagerMock.swift */,
 				A15163C1216AECF100D17686 /* APIClientMock.swift */,
 			);
 			path = Mocks;
@@ -443,7 +478,7 @@
 		A17005E72169473B000F60FB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A17005E82169476A000F60FB /* PersistenceManagerTests.swift */,
+				A17005E82169476A000F60FB /* ContextManagerTests.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -572,6 +607,7 @@
 				A1E3A5382166AB7B0089BFFF /* SearchVC.storyboard in Resources */,
 				A15163DD216B33B800D17686 /* ShowsDetailVC.storyboard in Resources */,
 				A12DF88A2165187F00003BDB /* MoviesVC.storyboard in Resources */,
+				0B01FC102171CEE80061CD1E /* DialogViewController.storyboard in Resources */,
 				A12DF84A2163C3BD00003BDB /* Main.storyboard in Resources */,
 				A15163CD216B33AC00D17686 /* ShowsVC.storyboard in Resources */,
 				A17005D821690AC5000F60FB /* MovieDetailVC.storyboard in Resources */,
@@ -689,7 +725,6 @@
 				A12DF8DC216596F500003BDB /* ContextManager.swift in Sources */,
 				A15163CF216B33AC00D17686 /* ShowsVCDelegate.swift in Sources */,
 				A12DF87B2164FD6600003BDB /* Movie.swift in Sources */,
-				A12DF8D9216596E300003BDB /* PersistenceManager.swift in Sources */,
 				A17005D521690AB4000F60FB /* MovieDetailCtrler.swift in Sources */,
 				A1E3A5502166B2DB0089BFFF /* SearchModels.swift in Sources */,
 				A15163D3216B33AC00D17686 /* ShowsCollectionViewCell.swift in Sources */,
@@ -700,6 +735,7 @@
 				A1E3A53E2166ABC40089BFFF /* SearchRouter.swift in Sources */,
 				A12DF8432163C3BD00003BDB /* AppDelegate.swift in Sources */,
 				A15163DF216B33B800D17686 /* ShowsDetailVC.swift in Sources */,
+				0B545965216EB64F00C0B935 /* Configuration.swift in Sources */,
 				A15163D5216B33AC00D17686 /* ShowsVM.swift in Sources */,
 				A15163DB216B33B800D17686 /* ShowsDetailVCDelegate.swift in Sources */,
 				A15163E4216B3E4900D17686 /* Show.swift in Sources */,
@@ -712,10 +748,14 @@
 				A17005DB216925AD000F60FB /* MoviesDetailVCDelegate.swift in Sources */,
 				A17005D221690A75000F60FB /* MovieDetailVC.swift in Sources */,
 				A1E3A54A2166AC150089BFFF /* SearchConfigurator.swift in Sources */,
+				0B130D7821711A18008DE2AB /* ContextManager+Configuration.swift in Sources */,
+				0B01FC0D2171C42E0061CD1E /* DialogViewControlles.swift in Sources */,
 				A15163D1216B33AC00D17686 /* ShowsCtrler.swift in Sources */,
 				A12DF8872165185900003BDB /* MoviesCtrler.swift in Sources */,
+				0B130D7621711741008DE2AB /* ContextManager+Movie.swift in Sources */,
 				A12DF89121653F7E00003BDB /* MoviesVCDelegate.swift in Sources */,
 				A1E3A53B2166ABAE0089BFFF /* SearchWorker.swift in Sources */,
+				0B130D7C21712202008DE2AB /* ContextManager+Show.swift in Sources */,
 				A12DF8952165476E00003BDB /* WhatToWhatchModel.xcdatamodeld in Sources */,
 				A15163E1216B33B800D17686 /* ShowsDetailCtrler.swift in Sources */,
 			);
@@ -731,8 +771,8 @@
 				A12DF8752163C95600003BDB /* Router.swift in Sources */,
 				A17005D621690AB4000F60FB /* MovieDetailCtrler.swift in Sources */,
 				A15163CC216B33AC00D17686 /* ShowsVC.swift in Sources */,
+				0B130D7D21712202008DE2AB /* ContextManager+Show.swift in Sources */,
 				A15163D0216B33AC00D17686 /* ShowsVCDelegate.swift in Sources */,
-				A12DF8DA216596E300003BDB /* PersistenceManager.swift in Sources */,
 				A1E3A54E2166AC2A0089BFFF /* SearchCell.swift in Sources */,
 				A17005E22169290F000F60FB /* SearchInteractorTest.swift in Sources */,
 				A1E3A5422166ABDA0089BFFF /* SearchPresenter.swift in Sources */,
@@ -742,22 +782,26 @@
 				A15163E5216B3E4900D17686 /* Show.swift in Sources */,
 				A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */,
 				A1E3A53C2166ABAE0089BFFF /* SearchWorker.swift in Sources */,
+				0B130D7A21711E2C008DE2AB /* ContextManager+Configuration.swift in Sources */,
 				A15163BB216AEA5900D17686 /* MoviesCtrlerTest.swift in Sources */,
 				A15163DC216B33B800D17686 /* ShowsDetailVCDelegate.swift in Sources */,
 				A12DF87F2165129D00003BDB /* APIConfiguration.swift in Sources */,
 				A17005E021692801000F60FB /* SearchPresenterTest.swift in Sources */,
 				A15163C2216AECF100D17686 /* APIClientMock.swift in Sources */,
+				0B01FC082171A6840061CD1E /* WhatToWhatchModel.xcdatamodeld in Sources */,
+				0B130D7921711DA9008DE2AB /* ContextManager+Movie.swift in Sources */,
+				0B01FC112171CEF30061CD1E /* DialogViewControlles.swift in Sources */,
 				A12DF8D621654D9200003BDB /* AppDelegate.swift in Sources */,
-				A17005E92169476A000F60FB /* PersistenceManagerTests.swift in Sources */,
+				A17005E92169476A000F60FB /* ContextManagerTests.swift in Sources */,
 				A15163E0216B33B800D17686 /* ShowsDetailVC.swift in Sources */,
-				A15163C0216AECC900D17686 /* PersistenceManagerMock.swift in Sources */,
+				A15163C0216AECC900D17686 /* ContextManagerMock.swift in Sources */,
 				A12DF87C2165071000003BDB /* Movie.swift in Sources */,
 				A12DF89221653F7E00003BDB /* MoviesVCDelegate.swift in Sources */,
 				A15163D4216B33AC00D17686 /* ShowsCollectionViewCell.swift in Sources */,
-				A12DF8962165476E00003BDB /* WhatToWhatchModel.xcdatamodeld in Sources */,
 				A12DF8882165185900003BDB /* MoviesCtrler.swift in Sources */,
 				A15163D6216B33AC00D17686 /* ShowsVM.swift in Sources */,
 				A1E3A53F2166ABC40089BFFF /* SearchRouter.swift in Sources */,
+				0B545966216EB64F00C0B935 /* Configuration.swift in Sources */,
 				A12DF8DD216596F500003BDB /* ContextManager.swift in Sources */,
 				A12DF878216423D900003BDB /* APIClient.swift in Sources */,
 				A12DF8E32165CBDE00003BDB /* MoviesVM.swift in Sources */,
