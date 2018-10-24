@@ -70,14 +70,13 @@ class SearchInteractor: SearchInteractorInput {
     func loadMovieList(_ request: SearchRequest) {
         if (!self.loading) {
             self.loading = true
-            weak var weakSelf = self
             self.searchRequest = request
-            worker.getMovieList(request.query!, success: { (result: [Item]) in
-                self.output.presentList(result)
-                weakSelf?.loading = false
-            }) { (error: Error) in
-                self.output.presentLoadListError()
-                weakSelf?.loading = false
+            worker.getMovieList(request.query!, success: { [weak self] (result: [Item]) in
+                self?.output.presentList(result)
+                self?.loading = false
+            }) { [weak self] (error: Error) in
+                self?.output.presentLoadListError()
+                self?.loading = false
             }
         }
     }
@@ -86,13 +85,12 @@ class SearchInteractor: SearchInteractorInput {
         if let request = self.searchRequest?.nextPage() {
             if (!self.loading) {
                 self.loading = true
-                weak var weakSelf = self
-                worker.getMovieList(request.query!, success: { (result: [Item]) in
-                    self.output.presentNextPageList(result)
-                    weakSelf?.loading = false
-                }) { (error: Error) in
-                    self.output.presentLoadListError()
-                    weakSelf?.loading = false
+                worker.getMovieList(request.query!, success: { [weak self] (result: [Item]) in
+                    self?.output.presentNextPageList(result)
+                    self?.loading = false
+                }) { [weak self] (error: Error) in
+                    self?.output.presentLoadListError()
+                    self?.loading = false
                 }
             }
         }
@@ -109,14 +107,13 @@ class SearchInteractor: SearchInteractorInput {
     func loadShowList(_ request: SearchRequest) {
         if (!self.loading) {
             self.loading = true
-            weak var weakSelf = self
             self.searchRequest = request
-            worker.getShowList(request.query!, success: { (result: [Item]) in
-                self.output.presentList(result)
-                weakSelf?.loading = false
-            }) { (error: Error) in
-                self.output.presentLoadListError()
-                weakSelf?.loading = false
+            worker.getShowList(request.query!, success: { [weak self] (result: [Item]) in
+                self?.output.presentList(result)
+                self?.loading = false
+            }) { [weak self] (error: Error) in
+                self?.output.presentLoadListError()
+                self?.loading = false
             }
         }
     }
@@ -125,13 +122,12 @@ class SearchInteractor: SearchInteractorInput {
         if let request = self.searchRequest?.nextPage() {
             if (!self.loading) {
                 self.loading = true
-                weak var weakSelf = self
-                worker.getShowList(request.query!, success: { (result: [Item]) in
-                    self.output.presentNextPageList(result)
-                    weakSelf?.loading = false
-                }) { (error: Error) in
-                    self.output.presentLoadListError()
-                    weakSelf?.loading = false
+                worker.getShowList(request.query!, success: { [weak self] (result: [Item]) in
+                    self?.output.presentNextPageList(result)
+                    self?.loading = false
+                }) { [weak self] (error: Error) in
+                    self?.output.presentLoadListError()
+                    self?.loading = false
                 }
             }
         }

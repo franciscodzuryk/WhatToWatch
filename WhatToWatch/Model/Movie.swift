@@ -32,7 +32,7 @@ public struct Movie: Codable {
     let originalTitle: String
     let originalLanguage: String
     let title: String
-    let backdropPathString: String?
+    let backdropPath: String?
     let popularity: Double
     let voteCount: Int
     let video: Bool
@@ -48,10 +48,12 @@ public struct Movie: Codable {
         case originalTitle = "original_title"
         case originalLanguage = "original_language"
         case title
-        case backdropPathString = "backdrop_path"
+        case backdropPath = "backdrop_path"
         case popularity
         case voteCount = "vote_count"
         case video
         case voteAverage = "vote_average"
     }
 }
+
+

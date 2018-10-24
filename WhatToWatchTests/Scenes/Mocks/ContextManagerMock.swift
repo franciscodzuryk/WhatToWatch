@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreData
-
-class PersistenceManagerMock : PersistenceManagerInterface {
-    var persistenceManager: PersistenceManager!
+/*
+class ContextManagerMock : ContextManagerInterface {
+    func getContextManager() -> ContextManager {
+        return contextManager
+    }
+    
     var contextManager: ContextManager!
     
     var saveConfigurationCount = 0
@@ -35,8 +38,9 @@ class PersistenceManagerMock : PersistenceManagerInterface {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        contextManager = ContextManager(testSotreCoordinator: container)
-        persistenceManager = PersistenceManager(testContextManager: contextManager!)
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        context.persistentStoreCoordinator = container.persistentStoreCoordinator
+        contextManager = ContextManager(testSotreCoordinator: container, testContext: context)
     }
     
     func cleanAllData() {
@@ -148,3 +152,4 @@ class PersistenceManagerMock : PersistenceManagerInterface {
         return [movieModel]
     }
 }
+*/

@@ -27,7 +27,8 @@ class MovieDetailVC: UIViewController, MoviesDetailVCDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ctrler = MovieDetailCtrler(self, persistenceManager: PersistenceManager(), apiClient: APIClient())
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        ctrler = MovieDetailCtrler(self, contextManager: appDelegate.contextManager, apiClient: APIClient())
         ctrler.getVideos(forMovie: movie!)
         if let image = movie!.backdropImage {
             imgMovie.image = image
@@ -47,9 +48,8 @@ class MovieDetailVC: UIViewController, MoviesDetailVCDelegate {
     }
     
     func networkError(error:Error) {
-        let alert = UIAlertController(title: "Network Error", message: error.localizedDescription, preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: "OK", style:.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
+        dialog.show()
     }
  
      func loadVideo(videoId:String) {

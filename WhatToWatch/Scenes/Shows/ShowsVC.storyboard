@@ -15,7 +15,7 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Aqz-v2-7iE" customClass="ShowsVC" customModule="WhatToWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xFY-Tb-tej">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vY-Ft-EN2">
@@ -98,6 +98,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PI5-SB-124"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Shows" image="series" id="j7X-Do-cSv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -120,7 +121,7 @@
     </scenes>
     <resources>
         <image name="empty_poster" width="172" height="253"/>
-        <image name="series" width="51" height="51"/>
+        <image name="series" width="34" height="34"/>
     </resources>
     <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

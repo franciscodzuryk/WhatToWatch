@@ -24,25 +24,24 @@ public struct ShowsVM {
     let backdropImage: UIImage?
     var posterImage: UIImage?
     
-    init(managedObject: NSManagedObject) {
-        self.id = managedObject.value(forKey:"id") as! Int
-        self.posterPath = managedObject.value(forKey:"posterPath") as? String
-        self.overview = managedObject.value(forKey:"overview") as! String
-        self.originalName = managedObject.value(forKey:"originalName") as! String
-        self.originalLanguage = managedObject.value(forKey:"originalLanguage") as? String
-        self.name = managedObject.value(forKey:"name") as! String
-        self.backdropPath = managedObject.value(forKey:"backdropPath") as? String
-        self.popularity = managedObject.value(forKey:"popularity") as! Double
-        self.voteCount = managedObject.value(forKey:"voteCount") as! Int
-        self.voteAverage = managedObject.value(forKey:"voteAverage") as! Double
-        
-        if let backdropImageData = managedObject.value(forKey:"backdropImage") as! Data? {
+    init(showModel: ShowModel) {
+        self.id = Int(showModel.id)
+        self.posterPath = showModel.posterPath
+        self.overview = showModel.overview!
+        self.originalName = showModel.originalName!
+        self.originalLanguage = showModel.originalLanguage
+        self.name = showModel.name!
+        self.backdropPath = showModel.backdropPath
+        self.popularity = showModel.popularity
+        self.voteCount = Int(showModel.voteCount)
+        self.voteAverage = showModel.voteAverage
+        if let backdropImageData = showModel.backdropImage {
             self.backdropImage = UIImage(data: backdropImageData)
         } else {
             self.backdropImage = nil
         }
         
-        if let posterImageData = managedObject.value(forKey:"posterImage") as! Data? {
+        if let posterImageData = showModel.posterImage {
             self.posterImage = UIImage(data: posterImageData)
         } else {
             self.posterImage = nil

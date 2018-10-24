@@ -17,15 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if let date = UserDefaults.standard.object(forKey: "updateTime") as? Date {
-            if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff > 24 {
-                PersistenceManager().cleanAllData()
-                UserDefaults.standard.set(Date(), forKey:"updateTime")
-                NotificationCenter.default.post(name: Notification.Name("ReloadAllData"), object: nil)
-            }
-        } else {
-            UserDefaults.standard.set(Date(), forKey:"updateTime")
-        }
+        updateDataIfNeeded()
         return true
     }
 
@@ -45,15 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if let date = UserDefaults.standard.object(forKey: "updateTime") as? Date {
-            if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff > 24 {
-                PersistenceManager().cleanAllData()
-                UserDefaults.standard.set(Date(), forKey:"updateTime")
-                NotificationCenter.default.post(name: Notification.Name("ReloadAllData"), object: nil)
-            }
-        } else {
-            UserDefaults.standard.set(Date(), forKey:"updateTime")
-        }
+        updateDataIfNeeded()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -61,18 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.contextManager.saveContext()
     }
     
-    lazy var datastoreCoordinator: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "WhatToWhatchModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
+    func updateDataIfNeeded() {
+        let config = Configuration()
+        if config.mustUpdateData() {
+            contextManager.cleanConfigurationModel()
+            contextManager.cleanMovieModel()
+            contextManager.cleanShowModel()
+            config.dataUpdated()
+        }
+    }
     lazy var contextManager: ContextManager = {
         return ContextManager()
     }()
+
 }
 

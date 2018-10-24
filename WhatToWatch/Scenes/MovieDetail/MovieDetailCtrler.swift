@@ -12,35 +12,36 @@ import CoreData
 class MovieDetailCtrler {
     private weak var view: MoviesDetailVCDelegate!
     private var apiConfiguration: APIConfiguration?
-    private let persistenceManager: PersistenceManagerInterface
+    private let contextManager: ContextManagerInterface
     private let apiClient: APIClientInterface
     
-    init(_ view: MoviesDetailVCDelegate, persistenceManager: PersistenceManagerInterface, apiClient: APIClientInterface) {
+    init(_ view: MoviesDetailVCDelegate, contextManager: ContextManagerInterface, apiClient: APIClientInterface) {
         self.view = view
-        self.persistenceManager = persistenceManager
+        self.contextManager = contextManager
         self.apiClient = apiClient
     }
 
     func getVideos(forMovie movie:MoviesVM) {
-        weak var weakSelf = self
-        apiClient.getVideosMovie(movieId: movie.id, success: {
-            (videos: [VideoMovie]) in
+        apiClient.getVideosMovie(movieId: movie.id, success: { [weak self] (videos: [VideoMovie]) in
             if let video = videos.first {
-                weakSelf?.view.loadVideo(videoId: video.key)
+                self?.view.loadVideo(videoId: video.key)
             }
-        }) { (error: Error) in
-            print(error)
+        }) { [weak self] (error: Error) in
+            DispatchQueue.main.async { [weak self] in
+                self?.view.networkError(error: error)
+            }
         }
     }
     
     func getImageForMovie(movie: MoviesVM) {
-        weak var weakself = self
         if let urlImage = movie.backdropPathString {
-            apiClient.getImage(urlImage, success: { (image: UIImage) in
-                weakself!.persistenceManager.saveImageForMovieId(movie.id, image:image, type:.backdropImage)
-                weakself!.view.updateImage(image: image)
-            }) { (error:Error) in
-                
+            apiClient.getImage("https://image.tmdb.org/t/p/w300/" + urlImage, success: { [weak self] (image: UIImage) in
+                self?.contextManager.saveImageForMovieId(movie.id, image:image, type:.backdropImage)
+                self?.view.updateImage(image: image)
+            }) { [weak self] (error: Error) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.view.networkError(error: error)
+                }
             }
         }
     }
