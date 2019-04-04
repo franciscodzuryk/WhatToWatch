@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="APIConfigurationModel" representedClassName="APIConfigurationModel" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="APIConfigurationModel" representedClassName=".APIConfigurationModel" syncable="YES" codeGenerationType="class">
         <attribute name="configJSON" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="onTheAirShowPage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="popularMoviesPage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -9,7 +9,7 @@
         <attribute name="topRatedShowPage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="upcomingPageCounter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="MoviePopularModel" representedClassName="MovieModel" syncable="YES" codeGenerationType="class">
+    <entity name="MoviePopularModel" representedClassName=".MovieModel" syncable="YES" codeGenerationType="class">
         <attribute name="adult" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,7 +25,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="MovieTopRatedModel" representedClassName="MovieModel" syncable="YES">
+    <entity name="MovieTopRatedModel" representedClassName=".MovieModel" syncable="YES">
         <attribute name="adult" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +41,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="MovieUpcomingModel" representedClassName="MovieModel" syncable="YES">
+    <entity name="MovieUpcomingModel" representedClassName=".MovieModel" syncable="YES">
         <attribute name="adult" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,7 +57,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="ShowOnTheAirModel" representedClassName="ShowModel" syncable="YES" codeGenerationType="class">
+    <entity name="ShowOnTheAirModel" representedClassName=".ShowModel" syncable="YES" codeGenerationType="class">
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -71,7 +71,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="ShowPopularModel" representedClassName="ShowModel" syncable="YES">
+    <entity name="ShowPopularModel" representedClassName=".ShowModel" syncable="YES">
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -85,7 +85,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="ShowTopRatedModel" representedClassName="ShowModel" syncable="YES">
+    <entity name="ShowTopRatedModel" representedClassName=".ShowModel" syncable="YES">
         <attribute name="backdropImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>

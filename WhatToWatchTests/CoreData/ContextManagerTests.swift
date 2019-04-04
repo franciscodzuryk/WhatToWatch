@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreData
+@testable import WhatToWatch
 
 class ContextManagerTests: XCTestCase {
     var contextManager: ContextManager?
@@ -15,7 +16,14 @@ class ContextManagerTests: XCTestCase {
     var movies = [Movie]()
 
     override func setUp() {
-        let container = NSPersistentContainer(name: "WhatToWhatchModel")
+        let bnl = Bundle(for: AppDelegate.self)
+        guard let modelURL = bnl.url(forResource: "WhatToWhatchModel", withExtension: "momd"),
+            let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
+            else {
+                fatalError("Unable to located Core Data model")
+        }
+        
+        let container = NSPersistentContainer(name: "WhatToWhatchModel", managedObjectModel: managedObjectModel)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -104,7 +112,7 @@ class ContextManagerTests: XCTestCase {
         contextManager!.cleanConfigurationModel()
         contextManager!.cleanMovieModel()
         contextManager!.cleanShowModel()
-        
+                
         let savedConf = contextManager!.getConfigurationModel()
         let savedPopular = contextManager!.getMovies(fromModel: .popular)
         let savedUpcoming = contextManager!.getMovies(fromModel: .upcoming)

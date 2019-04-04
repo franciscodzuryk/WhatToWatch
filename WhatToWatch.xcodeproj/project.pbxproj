@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B01FC082171A6840061CD1E /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
 		0B01FC0D2171C42E0061CD1E /* DialogViewControlles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */; };
 		0B01FC102171CEE80061CD1E /* DialogViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B01FC0F2171CEE80061CD1E /* DialogViewController.storyboard */; };
 		0B01FC112171CEF30061CD1E /* DialogViewControlles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01FC0C2171C42E0061CD1E /* DialogViewControlles.swift */; };
@@ -19,6 +18,7 @@
 		0B130D7D21712202008DE2AB /* ContextManager+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B130D7B21712202008DE2AB /* ContextManager+Show.swift */; };
 		0B545965216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
 		0B545966216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
+		0B92DD7D225687C90095C99C /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
 		2EEAD07721690B6A00AE802B /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEAD07521690B6A00AE802B /* MoviesCollectionViewCell.swift */; };
 		348B040F93D091536BF64832 /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1AD9F52836E910CF1CF4B3 /* Pods_WhatToWatch.framework */; };
 		99EBD3C66701E0832A4D5B30 /* Pods_WhatToWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00394F760E75B65F696FC24 /* Pods_WhatToWatchTests.framework */; };
@@ -780,6 +780,7 @@
 				A15163E2216B33B800D17686 /* ShowsDetailCtrler.swift in Sources */,
 				A15163D2216B33AC00D17686 /* ShowsCtrler.swift in Sources */,
 				A15163E5216B3E4900D17686 /* Show.swift in Sources */,
+				0B92DD7D225687C90095C99C /* WhatToWhatchModel.xcdatamodeld in Sources */,
 				A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */,
 				A1E3A53C2166ABAE0089BFFF /* SearchWorker.swift in Sources */,
 				0B130D7A21711E2C008DE2AB /* ContextManager+Configuration.swift in Sources */,
@@ -788,7 +789,6 @@
 				A12DF87F2165129D00003BDB /* APIConfiguration.swift in Sources */,
 				A17005E021692801000F60FB /* SearchPresenterTest.swift in Sources */,
 				A15163C2216AECF100D17686 /* APIClientMock.swift in Sources */,
-				0B01FC082171A6840061CD1E /* WhatToWhatchModel.xcdatamodeld in Sources */,
 				0B130D7921711DA9008DE2AB /* ContextManager+Movie.swift in Sources */,
 				0B01FC112171CEF30061CD1E /* DialogViewControlles.swift in Sources */,
 				A12DF8D621654D9200003BDB /* AppDelegate.swift in Sources */,
@@ -983,7 +983,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fran.WhatToWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1002,7 +1002,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fran.WhatToWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1022,7 +1022,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fran.WhatToWatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatToWatch.app/WhatToWatch";
 			};
@@ -1043,7 +1043,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fran.WhatToWatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatToWatch.app/WhatToWatch";
 			};

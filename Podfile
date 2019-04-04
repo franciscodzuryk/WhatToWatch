@@ -5,8 +5,8 @@ target 'WhatToWatch' do
   use_frameworks!
 
   # Pods for WhatToWatch
-  pod 'Alamofire', '~> 4.0'
-  pod 'AlamofireImage', '~> 3.1'
+  pod 'Alamofire', '~> 4.8'
+  pod 'AlamofireImage', '~> 3.5.2'
   pod 'youtube-ios-player-helper-swift'
   
   target 'WhatToWatchTests' do

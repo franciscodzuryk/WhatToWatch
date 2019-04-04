@@ -85,7 +85,7 @@ extension ContextManager:ContextManagerShowInterface {
     }
     
     func saveImageForShowId(_ id:Int, image:UIImage, type:ImageType) {
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        let imageData = image.jpegData(compressionQuality:1.0)
         ShowsPersistenModel.allCases.forEach {
             let model = $0.rawValue
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: model)
