@@ -14,7 +14,7 @@ protocol ContextManagerInterface : ContextManagerConfigurationInterface, Context
     func saveContext()
 }
 
-class ContextManager:ContextManagerInterface {
+class ContextManager: ContextManagerInterface {
     private let datastore: NSPersistentContainer
     private let context: NSManagedObjectContext
 

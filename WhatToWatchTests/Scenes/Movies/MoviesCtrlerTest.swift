@@ -9,28 +9,28 @@
 import XCTest
 
 class MoviesCtrlerTest: XCTestCase {
-//
-//    let persistenceManager: ContextManagerInterface? = nil
-//    let apiClient: APIClientInterface? = nil
-//    let view: MoviesVCDelegate? = nil
-//
-//    override func setUp() {
-//        // Put setup code here. This method is called before the invocation of each test method in the class.
-//    }
-//
-//    override func tearDown() {
-//        // Put teardown code here. This method is called after the invocation of each test method in the class.
-//    }
-//
-//    func testInit() {
-//        let persistenceManager = PersistenceManagerMock()
-//        let apiClient = APIClientMock()
-//        _ = MoviesCtrler(MoviesViewMock(), persistenceManager: persistenceManager, apiClient: apiClient)
-//        XCTAssert(persistenceManager.getConfigurationCount == 1)
-//        XCTAssert(persistenceManager.saveConfigurationCount == 1)
-//        XCTAssert(apiClient.getConfigurationCallCount == 1)
-//    }
-//
+
+    let persistenceManager: ContextManagerInterface? = nil
+    let apiClient: APIClientInterface? = nil
+    let view: MoviesVCDelegate? = nil
+
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testInit() {
+        let contextManagerMock = ContextManagerMock()
+        let apiClient = APIClientMock()
+        _ = MoviesCtrler(MoviesViewMock(), contextManager: contextManagerMock, apiClient: apiClient)
+        XCTAssert(contextManagerMock.getConfigurationCount == 1)
+        XCTAssert(contextManagerMock.saveConfigurationCount == 1)
+        XCTAssert(apiClient.getConfigurationCallCount == 1)
+    }
+
 //    func testInitWithConfig() {
 //        let persistenceManager = PersistenceManagerMock()
 //        persistenceManager.returnConfiguration = true
