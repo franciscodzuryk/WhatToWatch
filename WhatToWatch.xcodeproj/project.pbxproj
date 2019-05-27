@@ -19,7 +19,6 @@
 		0B545965216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
 		0B545966216EB64F00C0B935 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B545964216EB64F00C0B935 /* Configuration.swift */; };
 		0B92DD7D225687C90095C99C /* WhatToWhatchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8932165476E00003BDB /* WhatToWhatchModel.xcdatamodeld */; };
-		0BEEA46E229B542D00742E34 /* MoviesViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEEA46D229B542D00742E34 /* MoviesViewMock.swift */; };
 		2EEAD07721690B6A00AE802B /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEAD07521690B6A00AE802B /* MoviesCollectionViewCell.swift */; };
 		348B040F93D091536BF64832 /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1AD9F52836E910CF1CF4B3 /* Pods_WhatToWatch.framework */; };
 		99EBD3C66701E0832A4D5B30 /* Pods_WhatToWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00394F760E75B65F696FC24 /* Pods_WhatToWatchTests.framework */; };
@@ -134,7 +133,6 @@
 		0B130D7721711A18008DE2AB /* ContextManager+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextManager+Configuration.swift"; sourceTree = "<group>"; };
 		0B130D7B21712202008DE2AB /* ContextManager+Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextManager+Show.swift"; sourceTree = "<group>"; };
 		0B545964216EB64F00C0B935 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		0BEEA46D229B542D00742E34 /* MoviesViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewMock.swift; sourceTree = "<group>"; };
 		25346A1EC2C5952ED1CC4E64 /* Pods-WhatToWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		27C4ED21FBB4C0D0E5124188 /* Pods-WhatToWatchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToWatchUITests/Pods-WhatToWatchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EEAD07521690B6A00AE802B /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 			children = (
 				A15163BF216AECC900D17686 /* ContextManagerMock.swift */,
 				A15163C1216AECF100D17686 /* APIClientMock.swift */,
-				0BEEA46D229B542D00742E34 /* MoviesViewMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -777,7 +774,6 @@
 				0B130D7D21712202008DE2AB /* ContextManager+Show.swift in Sources */,
 				A15163D0216B33AC00D17686 /* ShowsVCDelegate.swift in Sources */,
 				A1E3A54E2166AC2A0089BFFF /* SearchCell.swift in Sources */,
-				0BEEA46E229B542D00742E34 /* MoviesViewMock.swift in Sources */,
 				A17005E22169290F000F60FB /* SearchInteractorTest.swift in Sources */,
 				A1E3A5422166ABDA0089BFFF /* SearchPresenter.swift in Sources */,
 				A17005D321690A75000F60FB /* MovieDetailVC.swift in Sources */,
