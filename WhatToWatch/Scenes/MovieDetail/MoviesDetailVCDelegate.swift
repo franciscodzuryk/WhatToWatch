@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MoviesDetailVCDelegate: class {
+protocol MoviesDetailVCDelegate: AnyObject {
     func networkError(error:Error)
     func loadVideo(videoId:String)
     func updateImage(image:UIImage)

@@ -34,19 +34,19 @@ class SearchWorker: SearchWorkerProtocol {
     }
     
     internal func getMovieList(_ query: MoviesSearchParameters, success: @escaping ([Item]) -> Void, fail: @escaping (_ error: Error) -> Void) {
-        Alamofire.request(Router.searchMovies(parameters: query)).responseJSON { response in
-            if response.result.isSuccess {
-                let json = response.data
+        AF.request(Router.searchMovies(parameters: query)).responseData { response in
+            switch response.result {
+            case .success(let data):
                 do{
                     let decoder = JSONDecoder()
-                    let result = try decoder.decode(SearchMovieResponse.self, from: json!)
+                    let result = try decoder.decode(SearchMovieResponse.self, from: data)
                     let items = result.results.map { return Item(itemMovieDTO:$0) }
                     success(items)
                 }catch let error {
                     fail(error)
                 }
-            } else {
-                fail(response.result.error!)
+            case .failure(let error):
+                fail(error)
             }
         }
     }
@@ -65,30 +65,31 @@ class SearchWorker: SearchWorkerProtocol {
     }
     
     internal func getShowList(_ query: MoviesSearchParameters, success: @escaping ([Item]) -> Void, fail: @escaping (_ error: Error) -> Void) {
-        Alamofire.request(Router.searchShows(parameters: query)).responseJSON { response in
-            if response.result.isSuccess {
-                let json = response.data
+        AF.request(Router.searchShows(parameters: query)).responseData { response in
+            switch response.result {
+            case .success(let data):
                 do{
                     let decoder = JSONDecoder()
-                    let result = try decoder.decode(SearchShowResponse.self, from: json!)
+                    let result = try decoder.decode(SearchShowResponse.self, from: data)
                     let items = result.results.map { return Item(itemShowDTO:$0) }
                     success(items)
                 }catch let error {
                     fail(error)
                 }
-            } else {
-                fail(response.result.error!)
+            case .failure(let error):
+                fail(error)
             }
         }
     }
     
     internal func getImage(_ url: String, success: @escaping (UIImage) -> Void, fail: @escaping (NSError) -> Void) {
-        Alamofire.request(url)
+        AF.request(url)
             .responseImage { response in
-                if response.result.isSuccess {
-                    success(response.result.value!)
-                } else {
-                    fail(response.result.error! as NSError)
+                switch response.result {
+                case .success(let image):
+                        success(image)
+                case .failure(let error):
+                    fail(error as NSError)
                 }
         }
     }

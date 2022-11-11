@@ -40,8 +40,9 @@ class MoviesVC: UIViewController {
     }
 
     func networkError(error:Error) {
-        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
-        dialog.show()
+//        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
+//        dialog.show()
+        
     }
     
     func setUpNavigationBar(){

@@ -36,10 +36,9 @@ class ShowsDetailCtrler {
             apiClient.getImage("https://image.tmdb.org/t/p/w300/" + urlImage, success: { [weak self] (image: UIImage) in
                 self?.contextManager.saveImageForShowId(show.id, image:image, type:.backdropImage)
                 self?.view.updateImage(image: image)
-            }) { [weak self] (error: Error) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.view.networkError(error: error)
-                }
+            }) { (error: Error) in
+                print("getImageForShow")
+                print(error)
             }
         }
     }

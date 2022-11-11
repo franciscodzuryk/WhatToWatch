@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ShowsVCDelegate: class {
+protocol ShowsVCDelegate: AnyObject {
     func networkError(error:Error)
     func updateShows(shows: [ShowsVM])
     func updateImage(image:UIImage, indexPath: IndexPath)

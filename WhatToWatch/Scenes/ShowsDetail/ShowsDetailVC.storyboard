@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yjN-xV-y9a">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yjN-xV-y9a">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQR-ZF-8fy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="06h-cW-9PI">
                                         <rect key="frame" x="0.0" y="155" width="375" height="62"/>
@@ -75,11 +73,25 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rj3-lP-FcF">
+                                        <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="ogl-2s-L8S"/>
+                                        </constraints>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.066666666666666666" green="0.10196078431372549" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rj3-lP-FcF" secondAttribute="trailing" id="5zO-h7-frP"/>
                                     <constraint firstItem="06h-cW-9PI" firstAttribute="top" secondItem="yQR-ZF-8fy" secondAttribute="top" constant="155" id="9md-DM-53b"/>
+                                    <constraint firstItem="rj3-lP-FcF" firstAttribute="leading" secondItem="yQR-ZF-8fy" secondAttribute="leading" id="HjU-g7-CJu"/>
                                     <constraint firstAttribute="trailing" secondItem="06h-cW-9PI" secondAttribute="trailing" id="Hml-31-KwM"/>
+                                    <constraint firstAttribute="bottom" secondItem="rj3-lP-FcF" secondAttribute="bottom" id="LNt-Mu-ynJ"/>
                                     <constraint firstItem="06h-cW-9PI" firstAttribute="leading" secondItem="yQR-ZF-8fy" secondAttribute="leading" id="LzF-9y-XBb"/>
                                     <constraint firstItem="06h-cW-9PI" firstAttribute="centerX" secondItem="yQR-ZF-8fy" secondAttribute="centerX" id="P1r-Sn-uJq"/>
                                     <constraint firstItem="Wqt-aI-HbR" firstAttribute="leading" secondItem="yQR-ZF-8fy" secondAttribute="leading" constant="8" id="Qz6-g9-FO8"/>
@@ -88,59 +100,31 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="txh-JQ-4RF">
-                                <rect key="frame" x="0.0" y="20" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="mOm-eN-pc9"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWT-ae-qRf" customClass="YTPlayerView" customModule="youtube_ios_player_helper_swift">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="CeA-jf-ebo"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pu4-Kf-gK5">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="playPause:" destination="yjN-xV-y9a" eventType="touchUpInside" id="W7J-rh-gvT"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ByC-7c-Awg">
-                                <rect key="frame" x="177.5" y="557" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ci3-fk-wnd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yQR-ZF-8fy" firstAttribute="trailing" secondItem="Ci3-fk-wnd" secondAttribute="trailing" id="4Ys-Bc-k4G"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="trailing" secondItem="pu4-Kf-gK5" secondAttribute="trailing" id="BQo-EP-tem"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="trailing" secondItem="Ci3-fk-wnd" secondAttribute="trailing" id="FJ0-Or-BQA"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="bottom" secondItem="pu4-Kf-gK5" secondAttribute="bottom" id="H4F-bE-sRc"/>
                             <constraint firstItem="txh-JQ-4RF" firstAttribute="top" secondItem="Ci3-fk-wnd" secondAttribute="top" id="JcG-xM-DRz"/>
                             <constraint firstItem="txh-JQ-4RF" firstAttribute="leading" secondItem="Ci3-fk-wnd" secondAttribute="leading" id="KNT-Ye-hhS"/>
                             <constraint firstItem="yQR-ZF-8fy" firstAttribute="leading" secondItem="Ci3-fk-wnd" secondAttribute="leading" id="NTS-TH-n82"/>
-                            <constraint firstItem="pu4-Kf-gK5" firstAttribute="centerX" secondItem="ByC-7c-Awg" secondAttribute="centerX" id="Ok7-a9-w4h"/>
-                            <constraint firstItem="pu4-Kf-gK5" firstAttribute="centerY" secondItem="ByC-7c-Awg" secondAttribute="centerY" id="Pom-4v-gWY"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="top" secondItem="pu4-Kf-gK5" secondAttribute="top" id="RWJ-c5-gCw"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="leading" secondItem="Ci3-fk-wnd" secondAttribute="leading" id="TBV-wW-pky"/>
                             <constraint firstItem="yQR-ZF-8fy" firstAttribute="bottom" secondItem="Ci3-fk-wnd" secondAttribute="bottom" id="Z0p-ZH-FRl"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="leading" secondItem="pu4-Kf-gK5" secondAttribute="leading" id="opf-o2-YOf"/>
                             <constraint firstItem="yQR-ZF-8fy" firstAttribute="top" secondItem="Ci3-fk-wnd" secondAttribute="top" id="taM-1J-cM7"/>
                             <constraint firstItem="Ci3-fk-wnd" firstAttribute="trailing" secondItem="txh-JQ-4RF" secondAttribute="trailing" id="uEe-ei-Ut5"/>
-                            <constraint firstItem="cWT-ae-qRf" firstAttribute="bottom" secondItem="Ci3-fk-wnd" secondAttribute="bottom" id="vAr-iT-JgR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ci3-fk-wnd"/>
                     </view>
                     <connections>
-                        <outlet property="btnPlayPause" destination="pu4-Kf-gK5" id="nXJ-tc-kLz"/>
                         <outlet property="imgShow" destination="txh-JQ-4RF" id="PBa-OO-5cp"/>
                         <outlet property="lblDescription" destination="Wqt-aI-HbR" id="EVr-9D-fDL"/>
                         <outlet property="lblTitle" destination="2BQ-0e-kPd" id="ICr-oC-UZx"/>
                         <outlet property="lblVoteAvarage" destination="e3Y-uq-N7L" id="OjT-ki-Adc"/>
                         <outlet property="lblVoteCount" destination="KN5-hL-GJH" id="470-SI-dWh"/>
-                        <outlet property="loadingMovieIndicator" destination="ByC-7c-Awg" id="jLH-2V-7qL"/>
-                        <outlet property="playerView" destination="cWT-ae-qRf" id="U7B-Pe-jgK"/>
+                        <outlet property="videoWebView" destination="rj3-lP-FcF" id="CoB-KH-W5Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jb0-8l-lwo" userLabel="First Responder" sceneMemberID="firstResponder"/>

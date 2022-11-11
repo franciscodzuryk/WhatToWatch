@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MoviesVCDelegate: class {
+protocol MoviesVCDelegate: AnyObject {
     func networkError(error:Error)
     func updateMovies(movies: [MoviesVM])
     func updateImage(image:UIImage, indexPath: IndexPath)

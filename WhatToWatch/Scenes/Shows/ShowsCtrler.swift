@@ -129,9 +129,8 @@ class ShowsCtrler {
                 self?.view.updateImage(image: image, indexPath: indexPath)
             }) { [weak self] (error: Error) in
                 self?.loading = false
-                DispatchQueue.main.async { [weak self] in
-                    self?.view.networkError(error: error)
-                }
+                print("getImageForShow")
+                print(error)
             }
         }
     }

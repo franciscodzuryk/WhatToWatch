@@ -16,7 +16,7 @@ protocol SearchPresenterInput {
     func presentImage(_ image: UIImage, forIndexPath: IndexPath)
 }
 
-protocol SearchPresenterOutput: class {
+protocol SearchPresenterOutput: AnyObject {
     func displayList(_ viewModel: SearchViewModel)
     func displayNextPageList(_ viewModel: SearchViewModel)
     func displayLoadListError()
