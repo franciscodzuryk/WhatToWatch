@@ -52,6 +52,9 @@
 		A13AD1FB295C993D007469BF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13AD1FA295C993D007469BF /* UIColor+Extensions.swift */; };
 		A143D052295CA0D600FDF39A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D051295CA0D600FDF39A /* UIImage+Extensions.swift */; };
 		A143D054295CA66E00FDF39A /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D053295CA66E00FDF39A /* UIButton+Extensions.swift */; };
+		A143D055295CCAD900FDF39A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13AD1FA295C993D007469BF /* UIColor+Extensions.swift */; };
+		A143D056295CCADD00FDF39A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D051295CA0D600FDF39A /* UIImage+Extensions.swift */; };
+		A143D057295CCAE000FDF39A /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D053295CA66E00FDF39A /* UIButton+Extensions.swift */; };
 		A15163B02169A55300D17686 /* APIConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A15163AF2169A55300D17686 /* APIConfiguration.json */; };
 		A15163B3216AC11500D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
 		A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
@@ -807,8 +810,10 @@
 				A1E3A5422166ABDA0089BFFF /* SearchPresenter.swift in Sources */,
 				A17005D321690A75000F60FB /* MovieDetailVC.swift in Sources */,
 				A15163E2216B33B800D17686 /* ShowsDetailCtrler.swift in Sources */,
+				A143D057295CCAE000FDF39A /* UIButton+Extensions.swift in Sources */,
 				A15163D2216B33AC00D17686 /* ShowsCtrler.swift in Sources */,
 				A15163E5216B3E4900D17686 /* Show.swift in Sources */,
+				A143D056295CCADD00FDF39A /* UIImage+Extensions.swift in Sources */,
 				0B92DD7D225687C90095C99C /* WhatToWhatchModel.xcdatamodeld in Sources */,
 				A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */,
 				A1E3A53C2166ABAE0089BFFF /* SearchWorker.swift in Sources */,
@@ -828,6 +833,7 @@
 				A12DF89221653F7E00003BDB /* MoviesVCDelegate.swift in Sources */,
 				A15163D4216B33AC00D17686 /* ShowsCollectionViewCell.swift in Sources */,
 				A12DF8882165185900003BDB /* MoviesCtrler.swift in Sources */,
+				A143D055295CCAD900FDF39A /* UIColor+Extensions.swift in Sources */,
 				A15163D6216B33AC00D17686 /* ShowsVM.swift in Sources */,
 				A1E3A53F2166ABC40089BFFF /* SearchRouter.swift in Sources */,
 				0B545966216EB64F00C0B935 /* Configuration.swift in Sources */,
