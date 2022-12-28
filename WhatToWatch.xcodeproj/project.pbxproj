@@ -49,6 +49,9 @@
 		A12DF8DD216596F500003BDB /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8DB216596F500003BDB /* ContextManager.swift */; };
 		A12DF8E22165CBDD00003BDB /* MoviesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8E12165CBDD00003BDB /* MoviesVM.swift */; };
 		A12DF8E32165CBDE00003BDB /* MoviesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12DF8E12165CBDD00003BDB /* MoviesVM.swift */; };
+		A13AD1FB295C993D007469BF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13AD1FA295C993D007469BF /* UIColor+Extensions.swift */; };
+		A143D052295CA0D600FDF39A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D051295CA0D600FDF39A /* UIImage+Extensions.swift */; };
+		A143D054295CA66E00FDF39A /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143D053295CA66E00FDF39A /* UIButton+Extensions.swift */; };
 		A15163B02169A55300D17686 /* APIConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A15163AF2169A55300D17686 /* APIConfiguration.json */; };
 		A15163B3216AC11500D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
 		A15163B4216AC29300D17686 /* VideoMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15163B2216AC11500D17686 /* VideoMovie.swift */; };
@@ -162,6 +165,9 @@
 		A12DF89721654AB600003BDB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A12DF8DB216596F500003BDB /* ContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		A12DF8E12165CBDD00003BDB /* MoviesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVM.swift; sourceTree = "<group>"; };
+		A13AD1FA295C993D007469BF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		A143D051295CA0D600FDF39A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		A143D053295CA66E00FDF39A /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		A15163AF2169A55300D17686 /* APIConfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APIConfiguration.json; sourceTree = "<group>"; };
 		A15163B2216AC11500D17686 /* VideoMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMovie.swift; sourceTree = "<group>"; };
 		A15163BA216AEA5900D17686 /* MoviesCtrlerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCtrlerTest.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 		0B01FC0B2171C4020061CD1E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A13AD1F9295C988E007469BF /* Extensions */,
 				0B01FC0E2171CEC50061CD1E /* Dialog */,
 			);
 			path = Utils;
@@ -380,6 +387,16 @@
 				0B130D7B21712202008DE2AB /* ContextManager+Show.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A13AD1F9295C988E007469BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A13AD1FA295C993D007469BF /* UIColor+Extensions.swift */,
+				A143D051295CA0D600FDF39A /* UIImage+Extensions.swift */,
+				A143D053295CA66E00FDF39A /* UIButton+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A15163B12169B0D200D17686 /* JSONMock */ = {
@@ -736,15 +753,18 @@
 				A12DF87B2164FD6600003BDB /* Movie.swift in Sources */,
 				A17005D521690AB4000F60FB /* MovieDetailCtrler.swift in Sources */,
 				A1E3A5502166B2DB0089BFFF /* SearchModels.swift in Sources */,
+				A143D052295CA0D600FDF39A /* UIImage+Extensions.swift in Sources */,
 				A15163D3216B33AC00D17686 /* ShowsCollectionViewCell.swift in Sources */,
 				A12DF8E22165CBDD00003BDB /* MoviesVM.swift in Sources */,
 				A16F39722166A26600CD4D54 /* SearchVC.swift in Sources */,
+				A143D054295CA66E00FDF39A /* UIButton+Extensions.swift in Sources */,
 				A15163B3216AC11500D17686 /* VideoMovie.swift in Sources */,
 				A15163CB216B33AC00D17686 /* ShowsVC.swift in Sources */,
 				A1E3A53E2166ABC40089BFFF /* SearchRouter.swift in Sources */,
 				A12DF8432163C3BD00003BDB /* AppDelegate.swift in Sources */,
 				A15163DF216B33B800D17686 /* ShowsDetailVC.swift in Sources */,
 				0B545965216EB64F00C0B935 /* Configuration.swift in Sources */,
+				A13AD1FB295C993D007469BF /* UIColor+Extensions.swift in Sources */,
 				A15163D5216B33AC00D17686 /* ShowsVM.swift in Sources */,
 				A15163DB216B33B800D17686 /* ShowsDetailVCDelegate.swift in Sources */,
 				A15163E4216B3E4900D17686 /* Show.swift in Sources */,

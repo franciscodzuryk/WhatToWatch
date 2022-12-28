@@ -45,8 +45,7 @@ class MovieDetailVC: UIViewController, MoviesDetailVCDelegate {
     }
     
     func networkError(error:Error) {
-        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
-        dialog.show()
+        DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok").show()
     }
  
     func updateImage(image:UIImage) {

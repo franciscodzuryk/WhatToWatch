@@ -11,7 +11,7 @@ import UIKit
 class DialogViewController: UIViewController {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var messageTextView: UITextView!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet weak var cancelButtonCenterConstraint: NSLayoutConstraint!
@@ -32,11 +32,11 @@ class DialogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerView.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.1019607843, blue: 0.1882352941, alpha: 1)
+        containerView.backgroundColor = .mainColor
         cancelButton.addTarget(self, action: #selector(self.cancelDialog), for: .touchUpInside)
         actionButton.addTarget(self, action: #selector(self.actionDialog), for: .touchUpInside)
         titleLabel.text = self.dialogTitle
-        messageLabel.text = self.dialogMessage
+        messageTextView.text = self.dialogMessage
         cancelButton.setTitle(self.cancelTitle, for: .normal)
         if isVisibleActionButton! {
             actionButton.isHidden = false

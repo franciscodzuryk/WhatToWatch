@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "Webp.net-resizeimage.png",
       "idiom" : "universal",
-      "filename" : "empty_poster_list_serie.png",
       "scale" : "1x"
     },
     {
+      "filename" : "Webp.net-resizeimage@2x.png",
       "idiom" : "universal",
-      "filename" : "empty_poster_list_serie@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "Webp.net-resizeimage@3x.png",
       "idiom" : "universal",
-      "filename" : "empty_poster_list_serie@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

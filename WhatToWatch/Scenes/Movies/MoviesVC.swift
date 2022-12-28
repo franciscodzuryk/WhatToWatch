@@ -40,18 +40,12 @@ class MoviesVC: UIViewController {
     }
 
     func networkError(error:Error) {
-//        let dialog = DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok")
-//        dialog.show()
-        
+        DialogViewController.dialogWithTitle(title: "Network Error", message: error.localizedDescription, cancelTitle: "Ok").show()
     }
     
     func setUpNavigationBar(){
-        let rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Webp.net-resizeimage"), style: .plain, target: self, action: #selector(setMovies))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIButton.pickerButton(self, action: #selector(setMovies)))
         self.navigationItem.title = "Movies"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.06666666667, green: 0.1019607843, blue: 0.1882352941, alpha: 1)
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     func setUpPickerView() {
@@ -59,7 +53,7 @@ class MoviesVC: UIViewController {
         self.pickerView.frame = CGRect(x: 0, y: self.view.bounds.size.height, width: self.view.bounds.size.width, height: self.pickerView.bounds.size.height)
         self.view.addSubview(self.pickerView)
         pickerView.delegate = self
-        pickerView.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.1019607843, blue: 0.1882352941, alpha: 1)
+        pickerView.backgroundColor = .mainColor
     }
     
     @objc func setMovies(){
