@@ -46,11 +46,6 @@
                BlueprintName = "WhatToWatchTests"
                ReferencedContainer = "container:WhatToWatch.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "ContextManagerTests/testCleanAllData()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

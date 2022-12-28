@@ -113,15 +113,18 @@ class ContextManagerTests: XCTestCase {
         contextManager!.cleanMovieModel()
         contextManager!.cleanShowModel()
                 
-        let savedConf = contextManager!.getConfigurationModel()
-        let savedPopular = contextManager!.getMovies(fromModel: .popular)
-        let savedUpcoming = contextManager!.getMovies(fromModel: .upcoming)
-        let savedTopRated = contextManager!.getMovies(fromModel: .topRated)
         
-        XCTAssert(savedConf == nil)
-        XCTAssert(savedPopular.count == 0)
-        XCTAssert(savedUpcoming.count == 0)
-        XCTAssert(savedTopRated.count == 0)
+        DispatchQueue.main.async { [weak self] in
+            let savedConf = self?.contextManager!.getConfigurationModel()
+            let savedPopular = self?.contextManager!.getMovies(fromModel: .popular)
+            let savedUpcoming = self?.contextManager!.getMovies(fromModel: .upcoming)
+            let savedTopRated = self?.contextManager!.getMovies(fromModel: .topRated)
+
+            XCTAssert(savedConf == nil)
+            XCTAssert(savedPopular?.count == 0)
+            XCTAssert(savedUpcoming?.count == 0)
+            XCTAssert(savedTopRated?.count == 0)
+        }
     }
     
     func testSavePosterImageForMovieId() {
